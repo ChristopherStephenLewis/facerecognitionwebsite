@@ -1,0 +1,9 @@
+#tiltComponent {
+  background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
+  height: 200px;
+  width: 250px;
+}
+
+#basicComp {
+  width: 280px;
+}
