@@ -90,7 +90,20 @@ const App = () => {
     // app.models.predict('face-detection', input)
       fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/outputs", returnClarifaiRequestOptions(input))
       .then(response => response.json())
-      .then(response => displayFaceBox(calculateFaceLocation(response)))
+      .then(response => {
+        displayFaceBox(calculateFaceLocation(response));
+        fetch('http://localhost:3001/image', {
+          method: 'put',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            id: user.id
+          })
+        })
+        .then(response => response.json())
+        .then(count => {
+          setUser({...user, entries: count})
+        })
+      })
       .catch(err => console.log(err));
   }
 
@@ -111,13 +124,13 @@ const App = () => {
       ?
       <div>
       <Logo/>
-      <Rank/>
+      <Rank name={user.name} entries={user.entries}/>
       <ImageLinkForm onInputChange={onInputChange} onButtonSubmit={onButtonSubmit}/>
       <FaceRecognition imageUrl={imageUrl} box={box} />
       </div>
       
       : (route === 'signin'
-      ?<SignIn onRouteChange={onRouteChange}/>
+      ?<SignIn onRouteChange={onRouteChange} loadUser={loadUser}/>
       : <Register onRouteChange={onRouteChange} loadUser={loadUser}/>)
       }
     </div>

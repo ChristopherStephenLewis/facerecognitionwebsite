@@ -13,7 +13,7 @@ const Register = ({onRouteChange, loadUser}) => {
   const onNameChange = (event) => {
     setName(event.target.value);
   }
-  const onSubmitSignIn = () => {
+  const onSubmitSignIn = () => { // change it to not accepting blank fields
     fetch('http://localhost:3001/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 //would implement axios
 //would implement JWT token in client-side cookie. Token would be attached to the request header for protected routes
-const SignIn = ({onRouteChange}) => {
+const SignIn = ({onRouteChange, loadUser}) => {
   const [signInEmail, setSignInEmail] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
   const onEmailChange = (event) => {
@@ -21,8 +21,9 @@ const SignIn = ({onRouteChange}) => {
       })
     })
     .then(response => response.json())
-    .then(data => {
-      if (data === 'success') {
+    .then(user => {
+      if (user.id) {
+        loadUser(user);
         onRouteChange('home');
       }
     })
