@@ -11,6 +11,7 @@ import ParticlesBg from 'particles-bg';
 
 const MODEL_ID = 'face-detection';
 
+// In a more serious project would move the Clarifai information to the backend for security purposes
 const returnClarifaiRequestOptions = (imageUrl) => {
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = '298d5e953fdc4cbd928e39eef3e55334';
@@ -48,7 +49,6 @@ const returnClarifaiRequestOptions = (imageUrl) => {
   return requestOptions
 }
 
-
 /////////////////////////////////////////////
 
 const App = () => {
@@ -58,6 +58,15 @@ const App = () => {
   const [route, setRoute] = useState('signin');
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [user, setUser] = useState({id: '', name: '', email: '', entries:0, joined:''})
+
+  const resetState = () => {
+    setInput('');
+    setImageUrl('');
+    setBox({});
+    //setRoute('signin);
+    setIsSignedIn(false);
+    setUser({id: '', name: '', email: '', entries:0, joined:''});
+  }
 
 
   const loadUser = (data) => {
@@ -103,6 +112,7 @@ const App = () => {
         .then(count => {
           setUser({...user, entries: count})
         })
+        .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   }
@@ -110,6 +120,7 @@ const App = () => {
   const onRouteChange = (route) => {
     if (route === 'signout') {
       setIsSignedIn(false);
+      resetState();
     } else if (route === 'home') {
       setIsSignedIn(true);
     }
