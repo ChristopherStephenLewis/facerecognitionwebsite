@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/facerecognitionwebsite/static/css/main.98af5d6e.css",
+    "main.js": "/facerecognitionwebsite/static/js/main.27f273b2.js",
+    "static/js/787.ba2c23e7.chunk.js": "/facerecognitionwebsite/static/js/787.ba2c23e7.chunk.js",
+    "static/media/Smart Brain-logos_transparent.png": "/facerecognitionwebsite/static/media/Smart Brain-logos_transparent.fbd9f39c93e403e7b22b.png",
+    "index.html": "/facerecognitionwebsite/index.html",
+    "main.98af5d6e.css.map": "/facerecognitionwebsite/static/css/main.98af5d6e.css.map",
+    "main.27f273b2.js.map": "/facerecognitionwebsite/static/js/main.27f273b2.js.map",
+    "787.ba2c23e7.chunk.js.map": "/facerecognitionwebsite/static/js/787.ba2c23e7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98af5d6e.css",
+    "static/js/main.27f273b2.js"
+  ]
+}
