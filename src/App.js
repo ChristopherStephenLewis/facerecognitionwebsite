@@ -8,6 +8,7 @@ import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import ParticlesBg from 'particles-bg';
+import backendUrls from './backendConfig';
 
 const MODEL_ID = 'face-detection';
 
@@ -101,7 +102,8 @@ const App = () => {
       .then(response => response.json())
       .then(response => {
         displayFaceBox(calculateFaceLocation(response));
-        fetch('http://localhost:3001/image', {
+        // fetch('http://localhost:3001/image', {
+        fetch(backendUrls.apiUrl + "/image", {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({

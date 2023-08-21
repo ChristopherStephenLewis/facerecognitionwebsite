@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import backendUrls from '../../backendConfig';
 
 //would implement axios
 //would implement JWT token in client-side cookie. Token would be attached to the request header for protected routes
@@ -12,7 +13,7 @@ const SignIn = ({onRouteChange, loadUser}) => {
     setSignInPassword(event.target.value);
   }
   const onSubmitSignIn = () => {
-    fetch('http://localhost:3001/signin', {
+    fetch(backendUrls.apiUrl + "/signin", {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

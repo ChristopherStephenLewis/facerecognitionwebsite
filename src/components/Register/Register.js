@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import backendUrls from '../../backendConfig';
 
 const Register = ({onRouteChange, loadUser}) => {
   const [email, setEmail] = useState('');
@@ -13,8 +14,8 @@ const Register = ({onRouteChange, loadUser}) => {
   const onNameChange = (event) => {
     setName(event.target.value);
   }
-  const onSubmitSignIn = () => { // change it to not accepting blank fields
-    fetch('http://localhost:3001/register', {
+  const onSubmitSignIn = () => { // change it to not accepting blank fields and to force proper inputs (@ in email for example)
+    fetch(backendUrls.apiUrl + "/register", {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
